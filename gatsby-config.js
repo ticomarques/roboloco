@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
   siteMetadata: {
     title: `Roboloco Restaurant`,
@@ -11,6 +14,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    }, {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.SPACEID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,
